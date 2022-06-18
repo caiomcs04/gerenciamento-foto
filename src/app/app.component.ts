@@ -7,15 +7,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
-  constructor(private userService: UserService) {}
+export class AppComponent {
 
-  photos:Photo[] = [];
-  userName:string = "flavio"
-
-  ngOnInit() {
-    this.userService.findAll(this.userName).subscribe((res) => {
-      this.photos = res;
-    });
-  }
 }
