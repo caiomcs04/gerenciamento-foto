@@ -4,8 +4,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'photolist', pathMatch: 'full' },
-  { path: 'photolist', component: PhotoListComponent },
+  { path: '', redirectTo: 'photoform', pathMatch: 'full' },
+
+  //em rotas ao passar o : ele recebe uma variavel
+  { path: 'user/:userName', component: PhotoListComponent },
   { path: 'photoform', component: PhotoFormComponent },
 ];
 

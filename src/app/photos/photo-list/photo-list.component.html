@@ -1,5 +1,10 @@
-<gfotos-photo
-  *ngFor="let photo of photos"
-  [url]="photo.url"
-  [description]="photo.description"
-></gfotos-photo>
+<!-- <ol class="list-unstyled row">
+  <li *ngFor="let photo of photos" class="col-4">
+    <gfotos-photo
+      [url]="photo.url"
+      [description]="photo.description"
+    ></gfotos-photo>
+  </li>
+</ol> -->
+
+<gfotos-photos [photos]="photos"></gfotos-photos>
