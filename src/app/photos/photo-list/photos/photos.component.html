@@ -2,7 +2,7 @@
 
 <ol class="list-unstyled">
   <li *ngFor="let col of rows" class="row">
-    <div *ngFor="let photo of col" class="col-4">
+    <div *ngFor="let photo of col" class="col-4" gFotosDarkenOnHover>
       <gfotos-card [title]="photo.description">
         <gfotos-photo
           class="g-0 row"
