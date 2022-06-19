@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PhotosModule } from './photos/photos.module';
 import { HttpClientModule } from '@angular/common/http';
-import { CardComponent } from './shared/components/card/card.component';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,8 @@ import { CardComponent } from './shared/components/card/card.component';
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    PhotosModule
+    PhotosModule,
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

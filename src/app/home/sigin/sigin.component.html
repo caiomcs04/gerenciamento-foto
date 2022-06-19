@@ -1,0 +1,37 @@
+<h4 class="mt-4 text-center">Login</h4>
+
+<form class="form m-4 mt-4" [formGroup]="loginForm">
+  <div class="form-group">
+    <input
+      formControlName="userName"
+      name="userName"
+      class="form-control"
+      placeholder="user name"
+      autofocus
+    />
+    <gfotos-mensage
+      *ngIf="loginForm.get('userName')?.errors?.['required'] && loginForm.get('userName')?.touched"
+      [mensage]="'Nome de usuário obrigatório'"
+    ></gfotos-mensage>
+  </div>
+
+  <div class="form-group mt-3">
+    <input
+      formControlName="password"
+      name="password"
+      type="password"
+      class="form-control"
+      placeholder="password"
+    />
+    <gfotos-mensage
+      *ngIf="loginForm.get('password')?.errors?.['required'] && loginForm.get('password')?.touched"
+      [mensage]="'Senha obrigatória'"
+    ></gfotos-mensage>
+  </div>
+
+  <button type="submit" class="btn btn-primary mt-3 btn-block col-12">
+    login
+  </button>
+</form>
+
+<p class="ms-4">Not a user? <a>Register now</a></p>
