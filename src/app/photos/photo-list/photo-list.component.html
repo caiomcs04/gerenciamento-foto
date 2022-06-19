@@ -1,8 +1,14 @@
 <div class="text-center mt-3 mb-3">
-  <form action="">
-    <input type="search" class="rounded" placeholder="search..." autofocus
-    (keyup)="debounce.next($any($event.target).value)"/>
+  <form>
+    <input
+      type="search"
+      class="rounded"
+      placeholder="search..."
+      autofocus
+      (keyup)="debounce.next($any($event.target).value)"
+    />
   </form>
 </div>
 <gfotos-photos [photos]="photos | filterByDescription: filter"></gfotos-photos>
 
+<gfotos-load-button (click)="load()" [hasMore]="hasMore"></gfotos-load-button>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'gfotos-load-button',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoadButtonComponent implements OnInit {
 
-  hasMore: boolean= false;
+  @Input()hasMore!: boolean;
 
   constructor() { }
 
