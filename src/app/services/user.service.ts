@@ -1,6 +1,6 @@
 import { Photo } from './../model/photo';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,7 +11,12 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  findAll(userName:string):Observable<Photo[]> {
+  findAll(userName: string): Observable<Photo[]> {
     return this.http.get<Photo[]>(`${this.url}/${userName}/photos`);
+  }
+
+  findAllPaginated(userName: string, page: number) {
+    const params = new HttpParams().append('page', page.toString());
+    return this.http.get<Photo[]>(`${this.url}/${userName}/photos`, { params });
   }
 }

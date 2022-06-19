@@ -1,3 +1,4 @@
+import { PhotoListResolver } from './photos/photo-list/photo-list.resolver';
 import { PhotoFormComponent } from './photos/photo-form/photo-form.component';
 import { PhotoListComponent } from './photos/photo-list/photo-list.component';
 import { NgModule } from '@angular/core';
@@ -7,7 +8,12 @@ const routes: Routes = [
   { path: '', redirectTo: 'photoform', pathMatch: 'full' },
 
   //em rotas ao passar o : ele recebe uma variavel
-  { path: 'user/:userName', component: PhotoListComponent },
+  //Resolver
+  {
+    path: 'user/:userName',
+    component: PhotoListComponent,
+    resolve: { photos: PhotoListResolver },
+  },
   { path: 'photoform', component: PhotoFormComponent },
 ];
 

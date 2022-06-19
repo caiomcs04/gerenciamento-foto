@@ -1,10 +1,8 @@
-<!-- <ol class="list-unstyled row">
-  <li *ngFor="let photo of photos" class="col-4">
-    <gfotos-photo
-      [url]="photo.url"
-      [description]="photo.description"
-    ></gfotos-photo>
-  </li>
-</ol> -->
+<div class="text-center mt-3 mb-3">
+  <form action="">
+    <input type="search" class="rounded" placeholder="search..." autofocus
+    (keyup)="debounce.next($any($event.target).value)"/>
+  </form>
+</div>
+<gfotos-photos [photos]="photos | filterByDescription: filter"></gfotos-photos>
 
-<gfotos-photos [photos]="photos"></gfotos-photos>

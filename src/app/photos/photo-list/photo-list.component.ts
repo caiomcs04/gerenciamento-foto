@@ -1,14 +1,16 @@
 import { Photo } from './../../model/photo';
 import { UserService } from './../../services/user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ThisReceiver } from '@angular/compiler';
+import { debounceTime, Subject } from 'rxjs';
 
 @Component({
   selector: 'gfotos-photo-list',
   templateUrl: './photo-list.component.html',
   styleUrls: ['./photo-list.component.scss'],
 })
-export class PhotoListComponent implements OnInit {
+export class PhotoListComponent implements OnInit, OnDestroy {
   constructor(
     private userService: UserService,
     private activateRoute: ActivatedRoute
@@ -16,12 +18,25 @@ export class PhotoListComponent implements OnInit {
 
   photos: Photo[] = [];
   userName!: string;
+  filter:string ='';
+  debounce: Subject<string> = new Subject<string>();
 
   ngOnInit() {
-    this.userName  = this.activateRoute.snapshot.params['userName'];
+    // this.userName  = this.activateRoute.snapshot.params['userName'];
 
-    this.userService.findAll(this.userName).subscribe((res) => {
-      this.photos = res;
-    });
+    // this.userService.findAll(this.userName).subscribe((res) => {
+    //   this.photos = res;
+    // });
+
+    //Ao usar o resolver não sefaz necessario acessar o servico. tudo é feito pelo resolver e acionado via  ativacao de rota
+
+    this.photos = this.activateRoute.snapshot.data['photos'];
+
+    this.debounce.pipe(debounceTime(300)).subscribe(filter => this.filter = filter);
   }
+
+  ngOnDestroy():void{
+    this.debounce.unsubscribe()
+  }
+
 }
