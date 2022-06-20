@@ -1,5 +1,5 @@
 import { Photo } from './model/photo';
-import { UserService } from './services/user.service';
+import { UserService } from './core/services/user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

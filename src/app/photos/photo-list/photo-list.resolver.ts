@@ -6,7 +6,7 @@ import {
   Resolve,
   RouterStateSnapshot,
 } from '@angular/router';
-import { UserService } from 'src/app/services/user.service';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Injectable({ providedIn: 'root' })
 export class PhotoListResolver implements Resolve<Observable<Photo[]>> {

@@ -1,18 +1,19 @@
 <h4 class="mt-4 text-center">Login</h4>
 
-<form class="form m-4 mt-4" [formGroup]="loginForm">
+<form class="form m-4 mt-4" [formGroup]="loginForm" (submit)="login()">
   <div class="form-group">
     <input
+      #userNameInput
       formControlName="userName"
       name="userName"
       class="form-control"
       placeholder="user name"
       autofocus
     />
-    <gfotos-mensage
+    <gfotos-message
       *ngIf="loginForm.get('userName')?.errors?.['required'] && loginForm.get('userName')?.touched"
       [mensage]="'Nome de usuário obrigatório'"
-    ></gfotos-mensage>
+    ></gfotos-message>
   </div>
 
   <div class="form-group mt-3">
@@ -23,13 +24,17 @@
       class="form-control"
       placeholder="password"
     />
-    <gfotos-mensage
+    <gfotos-message
       *ngIf="loginForm.get('password')?.errors?.['required'] && loginForm.get('password')?.touched"
       [mensage]="'Senha obrigatória'"
-    ></gfotos-mensage>
+    ></gfotos-message>
   </div>
 
-  <button type="submit" class="btn btn-primary mt-3 btn-block col-12">
+  <button
+    type="submit"
+    class="btn btn-primary mt-3 btn-block col-12"
+    [disabled]="!loginForm.valid"
+  >
     login
   </button>
 </form>
