@@ -8,11 +8,8 @@ import jwtDecode from 'jwt-decode';
   providedIn: 'root',
 })
 export class UserService {
-  private userSubject = new BehaviorSubject<User>({
-    id: 0,
-    name: '',
-    email: '',
-  });
+  private userSubject = new BehaviorSubject<User | null>(null);
+  private userName?: string;
 
   constructor(private tokenService: TokenService) {
     this.tokenService.hasToken() && this.decodeAndNotify();
@@ -23,7 +20,7 @@ export class UserService {
     this.decodeAndNotify();
   }
 
-  getUser(): Observable<User> {
+  getUser(): Observable<User | null> {
     return this.userSubject.asObservable();
   }
 
@@ -31,7 +28,21 @@ export class UserService {
     const token = this.tokenService.getToken();
     if (token) {
       const user = jwtDecode(token) as User;
+      this.userName = user.name;
       this.userSubject.next(user);
     }
+  }
+
+  logout() {
+    this.tokenService.removeToken();
+    this.userSubject.next(null);
+  }
+
+  isLoged() {
+    return this.tokenService.hasToken();
+  }
+
+  getUserName() {
+    return this.userName;
   }
 }

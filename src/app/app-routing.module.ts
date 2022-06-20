@@ -4,9 +4,10 @@ import { PhotoListComponent } from './photos/photo-list/photo-list.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SiginComponent } from './home/sigin/sigin.component';
+import { AuthGuard } from './core/services/auth/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: SiginComponent },
+  { path: '', component: SiginComponent, canActivate: [AuthGuard] },
 
   //em rotas ao passar o : ele recebe uma variavel
   //Resolver

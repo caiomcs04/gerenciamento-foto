@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { User } from './../../model/user';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
@@ -9,13 +10,18 @@ import { UserService } from '../services/user/user.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  user$?: Observable<User>;
-  user?: User;
+  user$?: Observable<User|null>;
+  // user?: User;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private route:Router) {
     this.user$ = this.userService.getUser();
-    this.user$?.subscribe((user) => (this.user = user));
+    // this.user$?.subscribe((user) => (this.user = user));
   }
 
   ngOnInit(): void {}
+
+  logout(){
+    this.userService.logout()
+    this.route.navigate(['']);
+  }
 }

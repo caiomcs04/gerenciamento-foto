@@ -1,9 +1,14 @@
 <header class="fixed-top">
   <nav class="navbar navbar-light bg-white">
-      <a class="navbar-brand">ALURAPIC</a>
-      <div>
-          <i class="fa fa-user-circle"></i>
-          <a class="ms-2 me-2 link-dark text-decoration-none"> {{user?.name}}</a>
-      </div>
+    <a class="navbar-brand">ALURAPIC</a>
+    <div *ngIf="user$ | async as user; else login">
+      <i class="fa fa-user-circle"></i>
+      <a class="ms-2 me-2 link-dark text-decoration-none"> {{ user?.name }}</a>
+      <a (click)="logout()">(Logout)</a>
+    </div>
+
+    <ng-template #login>
+      <a class="navbar-text me-4"> Please, Login!</a>
+    </ng-template>
   </nav>
 </header>
