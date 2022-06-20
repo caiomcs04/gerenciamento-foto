@@ -12,7 +12,7 @@ export class TokenService {
     return !!this.getToken();
   }
 
-  setToken(token: any) {
+  setToken(token: string | any) {
     window.localStorage.setItem(KEY, token);
   }
 

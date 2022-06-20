@@ -1,8 +1,7 @@
+import { PhotoService } from './../../core/services/photo/photo.service';
 import { Photo } from './../../model/photo';
-import { UserService } from '../../core/services/user.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { debounceTime } from 'rxjs';
 
 @Component({
   selector: 'gfotos-photo-list',
@@ -11,7 +10,7 @@ import { debounceTime } from 'rxjs';
 })
 export class PhotoListComponent implements OnInit {
   constructor(
-    private userService: UserService,
+    private photoService: PhotoService,
     private activateRoute: ActivatedRoute
   ) {}
 
@@ -27,7 +26,7 @@ export class PhotoListComponent implements OnInit {
     this.photos = this.activateRoute.snapshot.data['photos'];
 
 
-    // this.userService.findAll(this.userName).subscribe((res) => {
+    // this.photoService.findAll(this.userName).subscribe((res) => {
     //   this.photos = res;
     // });
 
@@ -38,7 +37,7 @@ export class PhotoListComponent implements OnInit {
 
 
   load() {
-    this.userService
+    this.photoService
       .findAllPaginated(this.userName, ++this.currentPage)
       .subscribe((photos) => {
         this.filter = ""
