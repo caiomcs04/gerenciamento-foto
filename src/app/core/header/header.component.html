@@ -1,4 +1,4 @@
-<header class="fixed-top">
+<header class="ms-3 fixed-top">
   <nav class="navbar navbar-light bg-white">
     <a class="navbar-brand">ALURAPIC</a>
     <div *ngIf="user$ | async as user; else login">
@@ -8,7 +8,7 @@
     </div>
 
     <ng-template #login>
-      <a class="navbar-text me-4"> Please, Login!</a>
+      <a class="navbar-text me-4" [routerLink]="['']" routerLinkActive="router-link-active" > Please, Login!</a>
     </ng-template>
   </nav>
 </header>

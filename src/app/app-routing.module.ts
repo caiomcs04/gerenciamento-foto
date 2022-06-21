@@ -1,3 +1,4 @@
+import { SignupComponent } from './home/signup/signup.component';
 import { PhotoListResolver } from './photos/photo-list/photo-list.resolver';
 import { PhotoFormComponent } from './photos/photo-form/photo-form.component';
 import { PhotoListComponent } from './photos/photo-list/photo-list.component';
@@ -8,6 +9,7 @@ import { AuthGuard } from './core/services/auth/auth.guard';
 
 const routes: Routes = [
   { path: '', component: SiginComponent, canActivate: [AuthGuard] },
+  { path: 'signup', component: SignupComponent},
 
   //em rotas ao passar o : ele recebe uma variavel
   //Resolver
