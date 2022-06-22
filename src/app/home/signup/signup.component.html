@@ -11,11 +11,11 @@
     />
     <gfotos-message
       *ngIf="signupForm.get('email')?.errors?.['required'] && signupForm.get('email')?.touched"
-      [mensage]="'Email obrigatório'"
+      [message]="'Email obrigatório'"
     ></gfotos-message>
     <gfotos-message
       *ngIf="signupForm.get('email')?.errors?.['email'] && signupForm.get('email')?.touched"
-      [mensage]="'Email Incorreto'"
+      [message]="'Email Incorreto'"
     ></gfotos-message>
   </div>
 
@@ -28,15 +28,15 @@
     />
     <gfotos-message
       *ngIf="signupForm.get('fullName')?.errors?.['required'] && signupForm.get('fullName')?.touched"
-      [mensage]="'Nome obrigatório'"
+      [message]="'Nome obrigatório'"
     ></gfotos-message>
     <gfotos-message
       *ngIf="signupForm.get('fullName')?.errors?.['minlength'] && signupForm.get('fullName')?.touched"
-      [mensage]="'Mínimo 3 caracteres'"
+      [message]="'Mínimo 3 caracteres'"
     ></gfotos-message>
     <gfotos-message
       *ngIf="signupForm.get('fullName')?.errors?.['maxlength'] && signupForm.get('fullName')?.touched"
-      [mensage]="'Máximo 40 caracteres'"
+      [message]="'Máximo 40 caracteres'"
     ></gfotos-message>
   </div>
 
@@ -52,19 +52,19 @@
     ></gfotos-message>
     <gfotos-message
       *ngIf="signupForm.get('userName')?.errors?.['minlength'] && signupForm.get('userName')?.touched"
-      [mensage]="'Mínimo 3 caracteres'"
+      [message]="'Mínimo 3 caracteres'"
     ></gfotos-message>
     <gfotos-message
       *ngIf="signupForm.get('userName')?.errors?.['maxlength'] && signupForm.get('userName')?.touched"
-      [mensage]="'Máximo 30 caracteres'"
+      [message]="'Máximo 30 caracteres'"
     ></gfotos-message>
     <gfotos-message
       *ngIf="signupForm.get('userName')?.errors?.['lowerCase'] && signupForm.get('userName')?.touched"
-      [mensage]="'Somente letras minúsculas'"
+      [message]="'Somente letras minúsculas'"
     ></gfotos-message>
     <gfotos-message
     *ngIf="signupForm.get('userName')?.errors?.['userNameTaken'] && signupForm.get('userName')?.touched"
-    [mensage]="'Usuário já existe'"
+    [message]="'Usuário já existe'"
   ></gfotos-message>
   <small *ngIf="signupForm.get('userName')?.valid" class="text-success">Usuario válido</small>
   </div>
@@ -79,15 +79,15 @@
     />
     <gfotos-message
       *ngIf="signupForm.get('password')?.errors?.['required'] && signupForm.get('password')?.touched"
-      [mensage]="'Senha obrigatória'"
+      [message]="'Senha obrigatória'"
     ></gfotos-message>
     <gfotos-message
       *ngIf="signupForm.get('password')?.errors?.['minlength'] && signupForm.get('password')?.touched"
-      [mensage]="'Mínimo 8 caracteres'"
+      [message]="'Mínimo 8 caracteres'"
     ></gfotos-message>
     <gfotos-message
       *ngIf="signupForm.get('password')?.errors?.['maxlength'] && signupForm.get('password')?.touched"
-      [mensage]="'Máximo 14 caracteres'"
+      [message]="'Máximo 14 caracteres'"
     ></gfotos-message>
   </div>
 

@@ -12,7 +12,7 @@
     />
     <gfotos-message
       *ngIf="loginForm.get('userName')?.errors?.['required'] && loginForm.get('userName')?.touched"
-      [mensage]="'Nome de usuário obrigatório'"
+      [message]="'Nome de usuário obrigatório'"
     ></gfotos-message>
   </div>
 
@@ -26,7 +26,7 @@
     />
     <gfotos-message
       *ngIf="loginForm.get('password')?.errors?.['required'] && loginForm.get('password')?.touched"
-      [mensage]="'Senha obrigatória'"
+      [message]="'Senha obrigatória'"
     ></gfotos-message>
   </div>
 
