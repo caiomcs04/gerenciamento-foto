@@ -1,11 +1,32 @@
 <div class="container">
   <form class="row" [formGroup]="photoForm" (submit)="upload()">
     <div class="col-md-6 text-center">
-      <input formControlName="file" name="file" type="file" accept="image/*" />
-      <gfotos-message
-        *ngIf="photoForm.get('file')?.errors?.['required'] && photoForm.get('file')?.touched"
-        [message]="'Porfavor, escolha uma foto'"
-      ></gfotos-message>
+      <div class="form-group" *ngIf="!preview; else showPreview">
+        <button
+          type="button"
+          (click)="fileInput.click()"
+          class="btn btn-primary"
+        >
+          <i class="fa fa-image fa-4x align-middle"></i>
+        </button>
+        <input
+          hidden
+          #fileInput
+          formControlName="file"
+          name="file"
+          type="file"
+          accept="image/*"
+          (change)="handleFile($event)"
+        />
+        <gfotos-message
+          *ngIf="photoForm.get('file')?.errors?.['required']"
+          [message]="'Porfavor, escolha uma foto'"
+        ></gfotos-message>
+      </div>
+
+      <ng-template #showPreview>
+        <gfotos-photo [url]="preview" title=""></gfotos-photo>
+      </ng-template>
     </div>
 
     <div class="col-md-6">
@@ -17,13 +38,13 @@
           placeholder="Descrição"
         ></textarea>
         <gfotos-message
-        *ngIf="photoForm.get('description')?.errors?.['required'] && photoForm.get('description')?.touched"
-        [message]="'Descrição obrigatória'"
-      ></gfotos-message>
-      <gfotos-message
-        *ngIf="photoForm.get('description')?.errors?.['maxlength'] && photoForm.get('description')?.touched"
-        [message]="'Máximo de caracteres excedido'"
-      ></gfotos-message>
+          *ngIf="photoForm.get('description')?.errors?.['required'] && photoForm.get('description')?.touched"
+          [message]="'Descrição obrigatória'"
+        ></gfotos-message>
+        <gfotos-message
+          *ngIf="photoForm.get('description')?.errors?.['maxlength'] && photoForm.get('description')?.touched"
+          [message]="'Máximo de caracteres excedido'"
+        ></gfotos-message>
       </div>
 
       <div class="form-group">
